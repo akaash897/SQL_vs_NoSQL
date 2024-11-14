@@ -1,0 +1,82 @@
+from pymongo import MongoClient
+from bench import benchmark_operation
+from random_data_generator import generate_key_value_pairs 
+from visualize import plot
+
+class MongoDBDatabase:
+    def __init__(self):
+        # Connect to MongoDB server
+        self.client = MongoClient("mongodb://localhost:27017/")
+        self.db = self.client.test_database
+        self.collection = self.db.key_value_collection
+
+    def instantiate(self):
+        """Clears all documents in the collection to start with a fresh dataset."""
+        self.collection.delete_many({})
+
+    def read(self, key):
+        """Reads the value associated with the given key."""
+        result = self.collection.find_one({"_id": key})
+        return result['value'] if result else None
+
+    def write(self, key, value):
+        """Writes a key-value pair to the collection, or updates the value if the key exists."""
+        self.collection.update_one({"_id": key}, {"$set": {"value": value}}, upsert=True)
+
+    def delete(self, key):
+        """Deletes a key-value pair by key."""
+        self.collection.delete_one({"_id": key})
+
+    def get_all_keys(self):
+        """Fetches all keys from the collection."""
+        return [doc["_id"] for doc in self.collection.find({}, {"_id": 1})]
+
+# Generate 1000 key-value pairs
+data = generate_key_value_pairs(1000)
+print("Sample data:", list(data.items())[:5])  
+
+# Initialize MongoDB adapter
+mongo_db = MongoDBDatabase()
+
+# Step 5.1: Instantiate (clear all records)
+instantiate_time = benchmark_operation(mongo_db, mongo_db.instantiate)
+print(f"Instantiate Time: {instantiate_time:.5f} seconds")
+
+# Step 5.2: Write (Insert all key-value pairs from generated data)
+write_times = []
+for key, value in data.items():
+    write_times.append(benchmark_operation(mongo_db, mongo_db.write, key, value))
+average_write_time = sum(write_times) / len(write_times)
+print(f"Average Write Time: {average_write_time:.5f} seconds per record")
+
+# Step 5.3: Read (Read all keys in the generated data)
+read_times = []
+for key in data.keys():
+    read_times.append(benchmark_operation(mongo_db, mongo_db.read, key))
+average_read_time = sum(read_times) / len(read_times)
+print(f"Average Read Time: {average_read_time:.5f} seconds per record")
+
+# Step 5.4: Delete (Delete all keys in the generated data)
+delete_times = []
+for key in data.keys():
+    delete_times.append(benchmark_operation(mongo_db, mongo_db.delete, key))
+average_delete_time = sum(delete_times) / len(delete_times)
+print(f"Average Delete Time: {average_delete_time:.5f} seconds per record")
+
+# Step 5.5: GetAllKeys (fetch all keys in one operation)
+mongo_db.instantiate()  # Reset data
+for key, value in data.items():  # Reinsert data to test GetAllKeys
+    mongo_db.write(key, value)
+get_all_keys_time = benchmark_operation(mongo_db, mongo_db.get_all_keys)
+print(f"GetAllKeys Time: {get_all_keys_time:.5f} seconds")
+
+# Create a dictionary of operation times for plotting
+operation_times = {
+    "Instantiate": instantiate_time,
+    "Write": average_write_time,
+    "Read": average_read_time,
+    "Delete": average_delete_time,
+    "GetAllKeys": get_all_keys_time
+}
+
+plot(operation_times)
