@@ -6,3 +6,4 @@ mysql.connector
 duckdb
 couchdb
 tinydb
+mysql-connector-python

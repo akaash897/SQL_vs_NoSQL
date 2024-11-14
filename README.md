@@ -26,8 +26,8 @@ Each directory contains scripts and instructions specific to setting up and benc
 ### Prerequisites
 
 - Python 3.6+ installed
-- Required Python packages: `pymongo`, `mysql-connector-python`, `requests`, `sqlite3`, `tinydb`, `psycopg2`, `duckdb`
-- Access to install and start services like MongoDB, CouchDB, and SQL Server Express, as necessary.
+- Required Python packages: see [requirements.txt](requirements.txt)
+- Access to install and start services like Oracle MySQL, MongoDB, CouchDB, and SQL Server Express, as necessary.
 
 Install all dependencies:
 
