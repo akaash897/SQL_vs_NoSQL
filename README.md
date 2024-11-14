@@ -1,4 +1,4 @@
-This README will provide an organized guide for replicating the experiment across all these databases, Summarizing installation steps, setup requirements, and other essential information for each of the databases tested. 
+This README will provide an organized guide for replicating the experiment across all these databases, summarizing installation steps, setup requirements, and other essential information for each of the databases tested. 
 ---
 
 # Key-Value Store Database Performance Comparison
