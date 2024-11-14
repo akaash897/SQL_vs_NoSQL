@@ -1,9 +1,7 @@
-from pymongo import MongoClient
+import mysql.connector
 from bench import benchmark_operation
 from random_data_generator import generate_key_value_pairs 
 from visualize import plot
-
-import mysql.connector
 
 class MySQLDatabase:
     def __init__(self, host='localhost', user='root', password='', database='KeyValueDB'):

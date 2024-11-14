@@ -1,7 +1,8 @@
-scikit-learn
-pandas
-numpy
-ipykernel
-flask
 matplotlib
 pymongo
+sqlite3
+pyodbc
+mysql.connector
+duckdb
+couchdb
+tinydb

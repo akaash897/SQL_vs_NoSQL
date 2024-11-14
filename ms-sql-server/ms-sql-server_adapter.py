@@ -2,9 +2,6 @@ import pyodbc
 from bench import benchmark_operation
 from random_data_generator import generate_key_value_pairs 
 from visualize import plot
-import pyodbc
-
-import pyodbc
 
 class SQLServerDatabase:
     def __init__(self):

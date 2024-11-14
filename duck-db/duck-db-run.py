@@ -1,9 +1,7 @@
+import duckdb
 from bench import benchmark_operation
 from random_data_generator import generate_key_value_pairs 
 from visualize import plot
-from tinydb import TinyDB, Query
-
-import duckdb
 
 class DuckDBDatabase:
     def __init__(self):
