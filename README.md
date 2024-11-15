@@ -1,12 +1,15 @@
+Software and Data Engineering -  Major Project
+
+Group No.: 71
+
+Collaborators (Name - Roll): 
+- Akaash Chatterjee - M24CSE002
+- Aman Saini - M24CSE003
+- Bera Swaminath Ansuman Sabita - M24CSE007
+
 This README will provide an organized guide for replicating the experiment across all these databases, summarizing installation steps, setup requirements, and other essential information for each of the databases tested. 
 ---
-SDE MAJOR Project
 
-GROUP NO-71
-
-Collaborators: Akaash Chatterjee - M24CSE002  ||
-Aman Saini - M24CSE003 ||
-Bera Swaminath Ansuman Sabita - M24CSE007
 # Topic: A performance comparison of SQL and NoSQL databases
 
 Based on the research paper: Y. Li and S. Manoharan, "A performance comparison of SQL and NoSQL databases," 2013 IEEE Pacific Rim Conference on Communications, Computers and Signal Processing (PACRIM), Victoria, BC, Canada, 2013, pp. 15-19, doi: 10.1109/PACRIM.2013.6625441. 
