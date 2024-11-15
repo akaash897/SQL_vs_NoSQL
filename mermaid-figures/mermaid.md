@@ -90,7 +90,45 @@ classDiagram
     adapter_run
 ```
 
-### 5) Package Diagram
+### 5) Class Diagram showing usage dependency
+```mermaid
+classDiagram
+    class adapter_run {
+        +Main Execution Script
+        +Imports DatabaseAdapter
+        +Uses Bench
+        +Uses RandomDataGenerator
+        +Uses Visualize
+    }
+
+    adapter_run --> DatabaseAdapter : Imports
+    adapter_run --> bench : Uses
+    adapter_run --> random_data_generator : Uses
+    adapter_run --> visualize : Uses
+
+    class DatabaseAdapter {
+        +Abstract Methods
+        +Instantiate()
+        +Read(key)
+        +Write(key, value)
+        +Delete(key)
+        +GetAllKeys()
+    }
+
+    class bench {
+        +benchmark_operation(obj, method, *args): float
+    }
+
+    class random_data_generator {
+        +generate_key_value_pairs(count: int): Dict[String, String]
+    }
+
+    class visualize {
+        +plot(operation_times: Dict[String, float]): void
+    }
+```
+
+### 6) Package Diagram
 
 ```mermaid
 graph TD
