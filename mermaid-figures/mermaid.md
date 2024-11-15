@@ -89,3 +89,16 @@ classDiagram
 
     adapter_run
 ```
+
+### 5) Package Diagram
+
+```mermaid
+graph TD
+    A[Adapter Run Script] -->|Generates Data| B[Random Data Generator]
+    A -->|Benchmarks Operations| C[Benchmark Module]
+    A -->|Instantiates| D[Database Adapters]
+    D -->|Interacts With| E[Databases]
+    A -->|Visualizes| F[Plotting Module]
+    E -->|Stores Key-Value Pairs| G[Database Instances]
+    D -->|Implements| H[CouchDB, MySQL, MongoDB, etc.]
+```
