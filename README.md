@@ -271,4 +271,6 @@ This experiment provides a performance comparison of several popular databases u
 
 ---
 
-## Acknowledgments
+## References
+
+Y. Li and S. Manoharan, "A performance comparison of SQL and NoSQL databases," 2013 IEEE Pacific Rim Conference on Communications, Computers and Signal Processing (PACRIM), Victoria, BC, Canada, 2013, pp. 15-19, doi: 10.1109/PACRIM.2013.6625441.
